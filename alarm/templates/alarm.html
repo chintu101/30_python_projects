@@ -12,10 +12,12 @@
             font-size: 1.2em;
             padding: 10px;
         }
-        #message {
-            font-size: 1.5em;
-            color: red;
+        #alarm-set-msg, #message {
+            font-size: 1.3em;
             margin-top: 20px;
+        }
+        #message {
+            color: red;
         }
     </style>
 </head>
@@ -25,6 +27,12 @@
         <input type="time" name="alarm_time" required>
         <button type="submit">Set Alarm</button>
     </form>
+
+    <div id="alarm-set-msg">
+        {% if message %}
+            {{ message }}
+        {% endif %}
+    </div>
 
     <div id="message"></div>
 
@@ -37,7 +45,7 @@
                         document.getElementById('message').textContent = "⏰ Time to wake up!";
                     }
                 });
-        }, 1000); // check every second
+        }, 1000);
     </script>
 </body>
 </html>

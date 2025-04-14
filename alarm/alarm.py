@@ -19,11 +19,13 @@ def alarm_check():
 @app.route("/", methods=["GET", "POST"])
 def index():
     global alarm_set, alarm_time, alarm_triggered
+    message = ""
     if request.method == "POST":
         alarm_time = request.form["alarm_time"]
         alarm_set = True
         alarm_triggered = False
-    return render_template("alarm.html")
+        message = f"✅ Alarm set for {alarm_time}"
+    return render_template("alarm.html", message=message)
 
 @app.route("/status")
 def status():
