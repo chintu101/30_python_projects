@@ -1,6 +1,6 @@
 import time
 
-print(time.strftime("%H:%M"))
+print(time.strftime("Current time: %H:%M"))
 alarm_time = input("Enter the alarm time (HH:MM): ")
 while time.strftime("%H:%M") != alarm_time:
     time.sleep(1)
