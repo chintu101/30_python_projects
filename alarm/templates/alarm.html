@@ -1,8 +1,27 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title> Alarm Clock <title/>    
-        
-    <head/>
-    
+<head>
+    <title>Web Alarm Clock</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 100px;
+        }
+        input, button {
+            font-size: 1.2em;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Set Alarm</h1>
+    <form method="POST">
+        <input type="time" name="alarm_time" required>
+        <button type="submit">Set Alarm</button>
+    </form>
+    {% if message %}
+        <p><strong>{{ message }}</strong></p>
+    {% endif %}
+</body>
 </html>
