@@ -12,6 +12,11 @@
             font-size: 1.2em;
             padding: 10px;
         }
+        #message {
+            font-size: 1.5em;
+            color: red;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -20,8 +25,19 @@
         <input type="time" name="alarm_time" required>
         <button type="submit">Set Alarm</button>
     </form>
-    {% if message %}
-        <p><strong>{{ message }}</strong></p>
-    {% endif %}
+
+    <div id="message"></div>
+
+    <script>
+        setInterval(() => {
+            fetch('/status')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.triggered) {
+                        document.getElementById('message').textContent = "⏰ Time to wake up!";
+                    }
+                });
+        }, 1000); // check every second
+    </script>
 </body>
 </html>
